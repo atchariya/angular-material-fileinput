@@ -301,7 +301,7 @@
                 scope.accept = scope.accept || '';
 
                 scope.lfFiles = [];
-                
+
                 scope[attrs.ngModel] = scope.lfFiles;
 
                 scope.$watch('lfFiles.length',function(newVal,oldVal){
@@ -533,6 +533,10 @@
 						var lfTagType = parseFileType(file);
 						var lfDataUrl = window.URL.createObjectURL(file);
 
+                        if(!scope.isMutiple){
+                            scope.lfFiles = [];
+                        }
+
 						scope.lfFiles.push({
 							"lfFile":lfFile,
 							"lfFileName":lfFileName,
@@ -678,7 +682,7 @@
 			}
 
 		};
-	
+
     }]);
 
 })(window.angular);
